@@ -23,9 +23,12 @@ function dateOfToday() {
   return noTime(new Date());
 }
 
+const aDayInMS = ms * 24 * hourInSec;
+
 function getTimeInDate(date) {
-  return date.getTime() / ms / 24 / hourInSec;
+  return date.getTime() / aDayInMS;
 }
+
 function howFar(birth, today) {
   return getTimeInDate(birth) - getTimeInDate(today);
 }
@@ -57,4 +60,10 @@ function nearestFutureDate(originalDate) {
   return nearestDate;
 }
 
-module.exports = { dateFromString, nearestFutureDate, dateOfToday, howFar };
+module.exports = {
+  dateFromString,
+  nearestFutureDate,
+  dateOfToday,
+  howFar,
+  aDayInMS
+};
