@@ -1,5 +1,3 @@
-/////// birthday utils
-/// extract to another file and make test files too
 const ms = 1000;
 const hourInSec = 3600;
 
@@ -58,7 +56,5 @@ function nearestFutureDate(originalDate) {
 
   return nearestDate;
 }
-
-//////// end of birthday utils
 
 module.exports = { dateFromString, nearestFutureDate, dateOfToday, howFar };
