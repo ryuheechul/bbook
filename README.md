@@ -5,6 +5,10 @@
 
 `$ make db-init`
 
+## test
+
+`$ make test`
+
 ## develop
 
 `$ make develop`
