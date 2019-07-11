@@ -1,0 +1,18 @@
+{
+  "name": "birthday-ledger",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "build": "don't forget this",
+    "test": "mocha test"
+  },
+  "dependencies": {
+    "express": "~4.16.1",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
+}
