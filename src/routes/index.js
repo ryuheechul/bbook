@@ -3,7 +3,7 @@ const router = Router();
 const {
   howFar,
   dateFromString,
-  nearestFutureDate,
+  nearestFutureDateOf,
   dateOfToday
 } = require("../date");
 
@@ -49,7 +49,7 @@ router.get("/hello/:username", async (req, res, next) => {
   }
 
   const birthDate = dateFromString(birthdayStr, validator.bDate);
-  const nearestDate = nearestFutureDate(birthDate);
+  const nearestDate = nearestFutureDateOf(birthDate);
   const today = dateOfToday();
   const distance = howFar(nearestDate, today);
   const msg = birthDayMsg(username, distance);

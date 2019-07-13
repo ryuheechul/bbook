@@ -30,7 +30,7 @@ function getTimeInDate(date) {
 }
 
 function howFar(birth, today) {
-  return getTimeInDate(birth) - getTimeInDate(today);
+  return Math.abs(getTimeInDate(birth) - getTimeInDate(today));
 }
 
 function dateFromString(dateStr, validate) {
@@ -42,26 +42,31 @@ function dateFromString(dateStr, validate) {
   return new Date(dateStr);
 }
 
-function nearestFutureDate(originalDate) {
-  const today = dateOfToday();
-  const thisYear = dateMap(today).year;
+function nearestFutureDateOf(oldDate) {
+  return nearestFutureDate({ oldDate, dateToCompare: dateOfToday() });
+}
+
+function nearestFutureDate({ oldDate, dateToCompare }) {
+  const thisYear = dateMap(dateToCompare).year;
 
   const thisYearBirthday = mapToDate({
-    ...dateMap(originalDate),
+    ...dateMap(oldDate),
     year: thisYear
   });
 
-  const isPastToday = thisYearBirthday.getTime() > today.getTime();
+  const isPastTheStandard =
+    thisYearBirthday.getTime() > dateToCompare.getTime();
 
-  const year = isPastToday ? thisYear : thisYear + 1;
+  const year = isPastTheStandard ? thisYear : thisYear + 1;
 
-  const nearestDate = mapToDate({ ...dateMap(originalDate), year });
+  const nearestDate = mapToDate({ ...dateMap(oldDate), year });
 
   return nearestDate;
 }
 
 module.exports = {
   dateFromString,
+  nearestFutureDateOf,
   nearestFutureDate,
   dateOfToday,
   howFar,
