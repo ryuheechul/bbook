@@ -1,22 +1,23 @@
 const ms = 1000;
 const hourInSec = 3600;
 
-function dateMap(date) {
+function toYmd(date) {
   return {
     year: date.getFullYear(),
-    month: date.getMonth(),
+    month: date.getMonth() + 1,
     date: date.getDate()
   };
 }
 
-function mapToDate(map) {
-  return new Date(map.year, map.month, map.date);
+function ymdToDate(map) {
+  const { year, month, date } = map;
+  return new Date(year, month - 1, date);
 }
 
 function noTime(date) {
-  const justDate = dateMap(date);
+  const justDate = toYmd(date);
 
-  return mapToDate(justDate);
+  return ymdToDate(justDate);
 }
 
 function dateOfToday() {
@@ -34,7 +35,6 @@ function howFar(birth, today) {
 }
 
 function dateFromString(dateStr, validate) {
-  // only 'YYYY-MM-DD' format
   if (validate) {
     if (!validate(dateStr)) throw new Error("invalid date format");
   }
@@ -47,10 +47,10 @@ function nearestFutureDateOf(oldDate) {
 }
 
 function nearestFutureDate({ oldDate, dateToCompare }) {
-  const thisYear = dateMap(dateToCompare).year;
+  const thisYear = toYmd(dateToCompare).year;
 
-  const thisYearBirthday = mapToDate({
-    ...dateMap(oldDate),
+  const thisYearBirthday = ymdToDate({
+    ...toYmd(oldDate),
     year: thisYear
   });
 
@@ -59,7 +59,7 @@ function nearestFutureDate({ oldDate, dateToCompare }) {
 
   const year = isPastTheStandard ? thisYear : thisYear + 1;
 
-  const nearestDate = mapToDate({ ...dateMap(oldDate), year });
+  const nearestDate = ymdToDate({ ...toYmd(oldDate), year });
 
   return nearestDate;
 }
@@ -70,5 +70,6 @@ module.exports = {
   nearestFutureDate,
   dateOfToday,
   howFar,
-  aDayInMS
+  aDayInMS,
+  toYmd
 };

@@ -5,7 +5,8 @@ const {
   nearestFutureDate,
   dateOfToday,
   howFar,
-  aDayInMS
+  aDayInMS,
+  toYmd
 } = require("../src/date");
 
 const today = dateOfToday();
@@ -36,9 +37,17 @@ describe("date module", () => {
     });
   });
 
-  describe("nearestFutureDate", () => {
-    it("dateFromString", () => {
-      assert(!"write here");
+  describe("dateFromString", () => {
+    it("dateFromString('1984-09-26')", () => {
+      const { year, month, date } = toYmd(dateFromString("1984-09-26"));
+      assert(year === 1984 && month === 9 && date === 26);
+    });
+
+    it("dateFromString('20011-13-50')", () => {
+      const { year, month, date } = toYmd(dateFromString("20011-13-50"));
+      assert(isNaN(year));
+      assert(isNaN(month));
+      assert(isNaN(date));
     });
   });
 });
