@@ -7,7 +7,7 @@ const {
   howFar,
   aDayInMS,
   toYmd
-} = require("../src/date");
+} = require("../../src/date");
 
 const today = dateOfToday();
 const threeDaysLater = new Date(today.getTime() + aDayInMS * 3);

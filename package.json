@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon src/app.js",
     "build": "don't forget this",
-    "test": "mocha test"
+    "test": "NODE_ENV=test bin/full-test.sh",
+    "unit-test": "mocha test/unit"
   },
   "dependencies": {
     "express": "~4.16.1",

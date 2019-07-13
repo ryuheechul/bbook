@@ -1,10 +1,13 @@
 const { Client } = require("pg");
+const { host, port } = require("../config").postgres;
 
 let client;
 
 async function initConn() {
   try {
     client = new Client({
+      host,
+      port,
       user: "postgres",
       database: "bbook"
     });
@@ -16,6 +19,7 @@ async function initConn() {
     console.log(res.rows[0].message);
     return;
   } catch (error) {
+    console.error(error);
     client = null;
     throw new Error("failed to init client");
   }
@@ -39,7 +43,6 @@ const tableBirthday = {
       "INSERT INTO birthday (username, bdate) VALUES ($1, $2)",
       [username, bDate]
     );
-    console.log(res);
     return res.rows[0];
   }
 };
