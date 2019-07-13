@@ -24,7 +24,7 @@ describe("postgres module testing", () => {
   });
 
   describe("db/postgres", () => {
-    it("insert and select goodman 1984-09-26", async () => {
+    it("insert and select goodman", async () => {
       const un = "goodman";
       const bd = "1989-11-06";
       await insertRow(un, bd);

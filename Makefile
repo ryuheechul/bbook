@@ -1,18 +1,24 @@
-.PHONY: test run develop db-init unit-test up-test-db up-test-db-d down-test-db
+.PHONY: test run develop db-init unit-test up-test-db up-test-db-d down-test-db down run-d
 
 db-init:
 	docker-compose -f compose-init.yml run postgres-init; sleep 2; docker-compose -f compose-init.yml down
 
-develop:
-	yarn && yarn start
+develop: down run-d
+	sleep 5 && yarn && yarn start
+
+down:
+	docker-compose down
 
 run:
 	docker-compose up
 
+run-d:
+	docker-compose up -d
+
 unit-test:
 	yarn && yarn unit-test
 
-test:
+test: down-test-db
 	yarn && yarn test
 
 up-test-db:

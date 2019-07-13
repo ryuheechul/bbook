@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const { speak: birthDayMsg } = require("../message");
 const {
   howFar,
   dateFromString,
@@ -23,23 +24,17 @@ router.put("/hello/:username", async (req, res, next) => {
   try {
     await setBirthday(username, dateOfBirth);
 
-    //TODO: use below
-    // res.status(204);
-    res.json({
-      un: username,
-      db: dateOfBirth,
-      test: validator.username(username)
-    });
+    res.status(204).end();
   } catch (error) {
-    console.error(error);
-    //TODO: proper status code and stuff
-    res.json({ not: "valid" });
+    // console.error(error); comment for now to avoid confusion in test console
+    res.status(500).send("Not valid");
   }
 });
 
 router.get("/hello/:username", async (req, res, next) => {
   const { username } = req.params;
   let birthdayStr;
+  //TODO: seperate this logic into another module so testing should be easier
 
   try {
     birthdayStr = await getBirthday(username);
@@ -56,13 +51,5 @@ router.get("/hello/:username", async (req, res, next) => {
 
   res.json({ message: msg });
 });
-
-function birthDayMsg(username, distance) {
-  if (distance > 0) {
-    return `Hello, ${username}! Your birth day is in ${distance} day(s)`;
-  }
-
-  return `Hello, ${username}! Happy birthday!`;
-}
 
 module.exports = router;
