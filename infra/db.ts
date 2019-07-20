@@ -11,7 +11,6 @@ export const instance = new gcp.sql.DatabaseInstance("bbook-db", {
             authorizedNetworks: [{ value: "0.0.0.0/0" }],
         },
         crashSafeReplication: true,
-        replicationType: dbMachineType
     }
 });
 
