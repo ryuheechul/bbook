@@ -12,6 +12,6 @@ export const dbPassword = config.require("dbPassword");
 
 /// Kubernetes config
 export const clusterNodeCount = config.getNumber("clusterNodeCount") || 3;
-export const clusterNodeMachineType = config.get("clusterNodeMachineType") || "n1-standard-1";
+export const clusterNodeMachineType = config.get("clusterNodeMachineType") || "f1-micro";
 export const clusterUsername = config.get("clusterUsername") || "admin";
 export const clusterPassword = config.require("clusterPassword");
