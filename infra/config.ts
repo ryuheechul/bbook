@@ -15,3 +15,5 @@ export const clusterNodeCount = config.getNumber("clusterNodeCount") || 3;
 export const clusterNodeMachineType = config.get("clusterNodeMachineType") || "f1-micro";
 export const clusterUsername = config.get("clusterUsername") || "admin";
 export const clusterPassword = config.require("clusterPassword");
+export const dbMachineType = config.get("dbMachineType") || "db-f1-micro";
+export const region = "europe-west2";

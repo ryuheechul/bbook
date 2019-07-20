@@ -1,10 +1,11 @@
 import * as gcp from "@pulumi/gcp";
 import * as k8s from "@pulumi/kubernetes";
 import * as pulumi from "@pulumi/pulumi";
-import { clusterNodeCount, clusterNodeMachineType, clusterPassword, clusterUsername } from "./config";
+import { region, clusterNodeCount, clusterNodeMachineType, clusterPassword, clusterUsername } from "./config";
 
 // Create the GKE cluster and export it.
 export const cluster = new gcp.container.Cluster("gke-cluster", {
+    region,
     initialNodeCount: clusterNodeCount,
     nodeVersion: "latest",
     minMasterVersion: "latest",
