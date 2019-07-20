@@ -1,7 +1,6 @@
 {
-  "name": "birthday-ledger",
-  "version": "0.0.0",
-  "private": true,
+  "name": "bbook",
+  "version": "0.1.0",
   "scripts": {
     "start": "nodemon src/server.js",
     "serve": "node src/server.js",
