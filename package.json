@@ -1,6 +1,7 @@
 {
   "name": "bbook",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "start": "nodemon src/server.js",
     "serve": "node src/server.js",
