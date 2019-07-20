@@ -33,9 +33,7 @@ const appDeployment = new k8s.apps.v1.Deployment("bbook-deployment", {
                     name: "bbook",
                     image: appImage.imageName,
                     env: [
-                        { name: "DB_HOST", value: db.instance.firstIpAddress },
-                        { name: "DB_USERNAME", value: config.dbUsername },
-                        { name: "DB_PASSWORD", value: config.dbPassword },
+                        { name: "POSTGRES_HOST", value: db.instance.firstIpAddress }
                     ],
                     ports: [{ containerPort: appPort }],
                 }],

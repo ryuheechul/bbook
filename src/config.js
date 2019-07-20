@@ -3,7 +3,7 @@ function postgres() {
     case "production":
       return {
         host: process.env.POSTGRES_HOST,
-        port: process.env.POSTGRES_PORT
+        port: process.env.POSTGRES_PORT || 5432
       };
     case "test":
       return { host: "postgres", port: 5432 };
