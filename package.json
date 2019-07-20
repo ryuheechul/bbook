@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon src/server.js",
-    "build": "don't forget this",
+    "serve": "node src/server.js",
     "test": "NODE_ENV=test mocha --recursive test",
     "unit-test": "mocha test/unit"
   },

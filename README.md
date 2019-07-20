@@ -14,5 +14,5 @@
 
 `$ make develop`
 
-## run app via docker-compose
-`$ make run`
+## run in production mode
+`$ make serve`

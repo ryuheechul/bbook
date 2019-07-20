@@ -1,5 +1,6 @@
 .PHONY: test develop db-init unit-test down-test-db down \
-	build-base build-dev build-test build-prod db-warm-up db-clean-up
+	build-base build-dev build-test build-prod db-warm-up \
+	db-clean-up serve
 
 db-warm-up:
 	docker-compose run -d postgres && sleep 15 && make down && make db-init
@@ -36,3 +37,6 @@ build-dev: build-base
 
 build-prod: build-base
 	docker build . -f prod.Dockerfile -t local-dockerfile-bbook:node-prod
+
+serve: build-prod # run in production mode
+	docker run -p 80:3000 --rm -it local-dockerfile-bbook:node-prod
