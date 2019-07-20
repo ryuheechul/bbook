@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   postgres:
-    image: postgres:9.6
+    image: postgres:9.6.14
     restart: always
     volumes:
       - ./.tmp/postgres/data:/var/lib/postgresql/data
@@ -9,3 +9,14 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=bbookPw
+  bbook-node:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - .:/bbook-app
+    depends_on:
+      - postgres
+    command: sh -c "sleep 3 && yarn && yarn start"
+    ports:
+      - "3000:3000"

@@ -1,9 +1,10 @@
 # bbook
 > bbook - Birthday book built on nodejs
 
-## init database via docker-compose
+## warm up database via docker-compose
+> do it once is enough unless '.tmp/postgres' is corrupted
 
-`$ make db-init`
+`$ make db-warm-up`
 
 ## test
 

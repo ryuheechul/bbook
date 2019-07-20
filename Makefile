@@ -1,20 +1,20 @@
-.PHONY: test run develop db-init unit-test down-test-db down run-d \
-	build-base build-dev build-test build-prod
+.PHONY: test develop db-init unit-test down-test-db down \
+	build-base build-dev build-test build-prod db-warm-up db-clean-up
+
+db-warm-up:
+	docker-compose run -d postgres && sleep 15 && make down && make db-init
+
+db-clean-up:
+	rm -rf .tmp/postgres
 
 db-init:
 	docker-compose -f compose-init.yml run postgres-init; sleep 2; docker-compose -f compose-init.yml down
 
-develop: down run-d
-	sleep 5 && yarn && yarn start
-
 down:
 	docker-compose down
 
-run:
+develop: down
 	docker-compose up
-
-run-d:
-	docker-compose up -d
 
 unit-test:
 	docker-compose -f compose-test.yml run bbook-node-test sh -c "yarn && yarn unit-test"
