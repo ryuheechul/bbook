@@ -9,7 +9,9 @@ export const instance = new gcp.sql.DatabaseInstance("bbook-db", {
         ipConfiguration: {
             authorizedNetworks: [{ value: "0.0.0.0/0" }],
         },
-    },
+        crashSafeReplication: true,
+        replicationType: 'db-f1-micro'
+    }
 });
 
 // Create a user with the configured credentials for the Rails app to use.
