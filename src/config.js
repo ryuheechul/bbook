@@ -6,10 +6,10 @@ function postgres() {
         port: process.env.POSTGRES_PORT
       };
     case "test":
-      return { host: "localhost", port: 55432 };
+      return { host: "postgres", port: 5432 };
     case "development":
     default:
-      return { host: "localhost", port: 5432 };
+      return { host: "postgres", port: 5432 };
   }
 }
 

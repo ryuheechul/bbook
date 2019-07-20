@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres:9.6
     restart: always
-    ports:
-      - "55432:5432"
+    environment:
+      - POSTGRES_PASSWORD=bbookPw
   postgres-test-init:
     image: postgres:9.6
     restart: always
@@ -15,3 +15,13 @@ services:
     depends_on:
       - postgres
     restart: "no"
+  bbook-node-test:
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    volumes:
+      - .:/bbook-app
+    depends_on:
+      - postgres
+      - postgres-test-init
+    command: sh -c "sleep 1 && yarn && yarn test"

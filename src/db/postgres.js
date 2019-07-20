@@ -9,6 +9,7 @@ async function initConn() {
       host,
       port,
       user: "postgres",
+      password: "bbookPw",
       database: "bbook"
     });
     await client.connect();

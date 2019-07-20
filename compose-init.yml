@@ -5,6 +5,8 @@ services:
     restart: always
     volumes:
       - ./.tmp/postgres/data:/var/lib/postgresql/data 
+    environment:
+      - POSTGRES_PASSWORD=bbookPw
   postgres-init:
     image: postgres:9.6
     restart: always
