@@ -12,5 +12,5 @@
 
 ## Verify
 - `$ yarn # or npm i`
-- `$ pulumi preview`
+- `$ make preview`
 - follow instruction to set config values
