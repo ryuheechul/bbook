@@ -1,5 +1,11 @@
-.PHONY: preview
+.PHONY: preview build up
 
-preview:
-	cd ../ && make build-base && cd infra && pulumi preview
+build:
+	cd ../ && make build-base
+
+preview: build
+	pulumi preview
+
+up: build
+	pulumi up
 
