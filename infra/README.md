@@ -1,6 +1,10 @@
 # IaC for bbook
 > base on https://github.com/pulumi/actions-example-gke-rails
 
+## Summary
+- Resilient infrastructure via replicas (3 kubernetes nodes + 2 db replicas)
+- Achieve IaC and CD both via Pulumi code
+
 ## Prerequisites
 - [docker](https://docs.docker.com/install/)
 - [pulumi](https://www.pulumi.com/docs/reference/install/)
