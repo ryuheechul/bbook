@@ -20,6 +20,9 @@
 ## Run in production mode
 `$ make serve`
 
+## Deploy via Pulumi
+[infra](infra)
+
 ## Caveats
 - this repo has been developed and tested on macOS but not on linux
 - so if you discover an issue on linux please let me know
