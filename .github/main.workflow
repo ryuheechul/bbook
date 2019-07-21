@@ -11,7 +11,8 @@ action "Pulumi Deploy (Current Stack)" {
         "PULUMI_ROOT" = "infra"
     }
     secrets = [
-        "PULUMI_ACCESS_TOKEN"
+        "PULUMI_ACCESS_TOKEN",
+        "GOOGLE_CREDENTIALS"
     ]
 }
 
@@ -28,6 +29,7 @@ action "Pulumi Preview (Merged Stack)" {
         "PULUMI_ROOT" = "infra"
     }
     secrets = [
-        "PULUMI_ACCESS_TOKEN"
+        "PULUMI_ACCESS_TOKEN",
+        "GOOGLE_CREDENTIALS"
     ]
 }
