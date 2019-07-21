@@ -29,4 +29,4 @@ Now you have `Pulumi.bbook.yaml` which is necessary to run pulumi
 - follow instruction to set config values
 
 ## Continuous Deployment via Github Actions
-- [../.github](../.github)
+- [../.github/docs](../.github/docs)
