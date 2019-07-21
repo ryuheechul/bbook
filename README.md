@@ -1,18 +1,25 @@
 # bbook
 > bbook - Birthday book built on nodejs
 
-## warm up database via docker-compose
-> do it once is enough unless '.tmp/postgres' is corrupted
+## Prerequisites
+- [docker](https://docs.docker.com/install/)
+
+## Warm up database via docker-compose
+> do it once is enough unless `.tmp/postgres` is corrupted
 
 `$ make db-warm-up`
 
-## test
+## Test
 
 `$ make test`
 
-## develop
+## Develop
 
 `$ make develop`
 
-## run in production mode
+## Run in production mode
 `$ make serve`
+
+## Caveats
+- this repo has been developed and tested on macOS but not on linux
+- so if you discover an issue on linux please let me know
